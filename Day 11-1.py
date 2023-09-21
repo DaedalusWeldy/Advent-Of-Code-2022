@@ -123,23 +123,12 @@ def inspect_item(monkey_input, index_to_inspect):
     monkey_input.monkey_counter += 1
 
 # Main execution programming:
-#TEST
-writer = open("Output Files/11-1 output.txt", "w")
 with open("Data Files/Day 11 Data.txt","r") as input:
     monkey_list = parse_monkey_data(input)
     for index in range(20):
         for current_monkey in monkey_list:
             while len(current_monkey.inventory) > 0:
                 inspect_item(current_monkey, 0)
-        # TEST
-        # Print the list of monkeys
-        writer.write("************\n")
-        writer.write("Index " + str(index + 1) + "\n")
-        writer.write("************\n")
-        for current_monkey in monkey_list:
-            writer.write("Monkey {}: {}\n".format(current_monkey.id_number, current_monkey.inventory))
-        # END TEST
     for current_monkey in monkey_list:
         print("Monkey {} passed {} times".format(current_monkey.id_number, 
                                                  current_monkey.monkey_counter))
-writer.close()
