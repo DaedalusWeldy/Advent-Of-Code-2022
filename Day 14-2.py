@@ -203,4 +203,4 @@ test_map.fill_to_top()
 test_map.print_map()
 
 # Future Dan: Find out why the count is off by one. Program returns 24658, correct answer is 24659.
-# Maybe not counting last item correctly? Where is the missing one?
+# Maybe not counting last item correctly? Where *is* the missing one?
