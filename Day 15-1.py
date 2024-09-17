@@ -1,6 +1,13 @@
 # Advent of Code 2022 - Day 15 Part 1
 # Sensors and beacons, and a specific y-level? 
 
+# Merge two lists, skipping duplicate values
+def combine_lists(original_list, list_to_join):
+    for entry in list_to_join:
+        if original_list.count(entry) == 0:
+            original_list.append(entry)
+    original_list.sort()
+
 # Find and return the "Manhattan Distance" of two points.
 def find_manhattan_dist(start, end):
     # Manhattan distance is calulated by |x1 - x2| + |y1 - y2|
@@ -12,6 +19,7 @@ def find_manhattan_dist(start, end):
 # format), returns a list of x-coordinates on the given row that are marked 
 # by that sensor/beacon combo.
 def generate_mark_list(target_y_level, sensor_coord, beacon_coord):
+    list_to_return = []
     # find the manhattan distance between the sensor and the beacon. 
     distance = find_manhattan_dist(sensor_coord, beacon_coord)
     
@@ -27,5 +35,10 @@ def generate_mark_list(target_y_level, sensor_coord, beacon_coord):
     line_length = 1 + (2 * side_length)
     start_point = sensor_coord[1] - side_length
     end_point = start_point + line_length
-    for index in range(start_point, end_point):
-        
+    for index in range(start_point, end_point + 1):
+        if list_to_return.count(index) == 0:
+            list_to_return.append(index)
+    
+    # sort the list and return it
+    list_to_return = list_to_return.sort()
+    return list_to_return
